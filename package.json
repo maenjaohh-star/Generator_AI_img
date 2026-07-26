@@ -1,0 +1,19 @@
+{
+  "name": "ai-asset-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Asset Generator for Adobe Stock",
+  "scripts": {
+    "dev": "concurrently -n BACKEND,WORKER,FRONTEND -c blue,green,yellow \"npm run dev --prefix backend\" \"npm run worker --prefix backend\" \"npm run dev --prefix frontend\"",
+    "backend": "npm run dev --prefix backend",
+    "worker": "npm run worker --prefix backend",
+    "frontend": "npm run dev --prefix frontend"
+  }
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  }
+}

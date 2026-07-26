@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  assets    Asset[]
+}
+
+model Asset {
+  id        String   @id @default(uuid())
+  userId    String
+  prompt    String
+  optimizedPrompt String?
+  finalPrompt String?
+  provider  String
+  model     String?
+  imageUrl  String?
+  status    String   @default("pending")
+  title     String?
+  keywords  String?
+  category  String?
+  favorite  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
