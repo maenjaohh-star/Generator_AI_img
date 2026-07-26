@@ -17,7 +17,7 @@ export default function TemplateSelect({ value, onChange }: Props) {
   return (
     <div className="space-y-2">
       <label className="font-medium">Template</label>
-      <Select value={value} onValueChange={onChange}>
+      <Select value={value} onValueChange={(value) => onChange(value || "")}>
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
