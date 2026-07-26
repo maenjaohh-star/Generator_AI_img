@@ -86,10 +86,13 @@ export default function GalleryPage() {
             </button>
             <button
               onClick={() =>
-                downloadMutation.mutate(selectedIds, {
-                  upscale,
-                  scale: scaleFactor,
-                } as any)
+                downloadMutation.mutate({
+                    ids: selectedIds,
+                    options: {
+                        upscale,
+                        scale: scaleFactor,
+                    },
+                })
               }
               disabled={downloadMutation.isPending}
               className="px-4 py-2 rounded-lg bg-blue-600 text-white disabled:opacity-50"
